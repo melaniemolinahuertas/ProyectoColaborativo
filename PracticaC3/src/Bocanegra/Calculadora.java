@@ -4,98 +4,134 @@
  */
 package Bocanegra;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author Charlie
+ * @author Carlos BU
+ * Fecha: 01 de mayo de 2025
+ * Descripción: Calculadora interactiva con sobrecarga de métodos.
  */
-public class TiendaCarBu {
-    private final ArrayList<String> productos;
-    private final ArrayList<Double> precios;
+public class Calculadora {
 
-    public TiendaCarBu() {
-        productos = new ArrayList<>();
-        precios = new ArrayList<>();
+    public int suma(int a, int b) {
+        return a + b;
     }
 
-    public void agregarProducto(String nombre, double precio) {
-        productos.add(nombre);
-        precios.add(precio);
-        System.out.println("Producto agregado: " + nombre + " - Precio: S/" + precio);
+    public int suma(int a, int b, int c) {
+        return a + b + c;
     }
 
-    public void mostrarProductos() {
-        if (productos.isEmpty()) {
-            System.out.println("No hay productos en la tienda.");
-        } else {
-            System.out.println("\nLista de productos disponibles:");
-            for (int i = 0; i < productos.size(); i++) {
-                System.out.println((i + 1) + ". " + productos.get(i) + " - S/" + precios.get(i));
-            }
-        }
+    public double suma(double a, double b) {
+        return a + b;
     }
 
-    public void eliminarProducto(String nombre) {
-        int index = productos.indexOf(nombre);
-        if (index != -1) {
-            productos.remove(index);
-            precios.remove(index);
-            System.out.println("Producto eliminado: " + nombre);
-        } else {
-            System.out.println("El producto no se encontró en la tienda.");
-        }
+    public double suma(double a, double b, double c) {
+        return a + b + c;
+    }
+
+    public String suma(String texto1, String texto2) {
+        return texto1 + " " + texto2;
     }
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            TiendaCarBu tienda = new TiendaCarBu();
-            int opcion;
-            
-            System.out.println("Autor: Carlos BU - Gestión de tienda interactiva");
-            
-            do {
-                System.out.println("\nElige una opción:");
-                System.out.println("1. Mostrar productos");
-                System.out.println("2. Agregar producto");
-                System.out.println("3. Eliminar producto");
-                System.out.println("4. Salir");
-                
-                System.out.print("Opción: ");
-                while (!scanner.hasNextInt()) {
-                    System.out.println("Error: Ingrese un número válido.");
-                    scanner.next();
+        Scanner scanner = new Scanner(System.in);
+        Calculadora calc = new Calculadora();
+        int opcion;
+
+        System.out.println("Autor: Carlos BU - Calculadora interactiva");
+
+        do {
+            System.out.println("\nElige una operación:");
+            System.out.println("1. Sumar dos enteros");
+            System.out.println("2. Sumar tres enteros");
+            System.out.println("3. Sumar dos decimales");
+            System.out.println("4. Sumar tres decimales");
+            System.out.println("5. Concatenar dos textos");
+            System.out.println("6. Salir");
+            System.out.print("Opción: ");
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: Ingrese un número válido.");
+                scanner.next();
+            }
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
+
+            switch (opcion) {
+                case 1 -> {
+                    System.out.print("Ingrese el primer número entero: ");
+                    int a1 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el segundo número entero: ");
+                    int b1 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Resultado: " + calc.suma(a1, b1));
                 }
-                opcion = scanner.nextInt();
-                scanner.nextLine();
-                
-                switch (opcion) {
-                    case 1 -> tienda.mostrarProductos();
-                    case 2 -> {
-                        System.out.print("Ingrese el nombre del producto: ");
-                        String nombre = scanner.nextLine();
-                        double precio = -1;
-                        do {
-                            System.out.print("Ingrese el precio del producto: ");
-                            while (!scanner.hasNextDouble()) {
-                                System.out.println("Error: Ingrese un número válido.");
-                                scanner.next();
-                            }
-                            precio = scanner.nextDouble();
-                        } while (precio < 0);
-                        
-                        tienda.agregarProducto(nombre, precio);
-                    }
-                    case 3 -> {
-                        System.out.print("Ingrese el nombre del producto a eliminar: ");
-                        String productoEliminar = scanner.nextLine();
-                        tienda.eliminarProducto(productoEliminar);
-                    }
-                    case 4 -> System.out.println("Gracias por usar el sistema.");
-                    default -> System.out.println("Opción inválida, intenta de nuevo.");
+                case 2 -> {
+                    System.out.print("Ingrese el primer número entero: ");
+                    int a2 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el segundo número entero: ");
+                    int b2 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el tercer número entero: ");
+                    int c2 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Resultado: " + calc.suma(a2, b2, c2));
                 }
-            } while (opcion != 4);
-        }
+                case 3 -> {
+                    System.out.print("Ingrese el primer número decimal: ");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Error: Ingrese un número decimal válido.");
+                        scanner.next();
+                    }
+                    double a3 = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el segundo número decimal: ");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Error: Ingrese un número decimal válido.");
+                        scanner.next();
+                    }
+                    double b3 = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.println("Resultado: " + calc.suma(a3, b3));
+                }
+                case 4 -> {
+                    System.out.print("Ingrese el primer número decimal: ");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Error: Ingrese un número decimal válido.");
+                        scanner.next();
+                    }
+                    double a4 = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el segundo número decimal: ");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Error: Ingrese un número decimal válido.");
+                        scanner.next();
+                    }
+                    double b4 = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Ingrese el tercer número decimal: ");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Error: Ingrese un número decimal válido.");
+                        scanner.next();
+                    }
+                    double c4 = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.println("Resultado: " + calc.suma(a4, b4, c4));
+                }
+                case 5 -> {
+                    System.out.print("Ingrese el primer texto: ");
+                    String t1 = scanner.nextLine();
+                    System.out.print("Ingrese el segundo texto: ");
+                    String t2 = scanner.nextLine();
+                    System.out.println("Resultado: " + calc.suma(t1, t2));
+                }
+                case 6 -> System.out.println("Gracias por usar la calculadora.");
+                default -> System.out.println("Opción inválida, intenta de nuevo.");
+            }
+        } while (opcion != 6);
+
+        scanner.close();
     }
 }
