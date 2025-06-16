@@ -15,6 +15,7 @@ Archivos de datos: .txt (para usuarios y tecnicos)
 
 Estructura de ramas (Git Flow)
 Este proyecto sigue una estructura de ramas basada en Git Flow, para mantener un orden en el desarrollo y facilitar futuras mejoras o correcciones.
+
 master	: Contiene la versión estable y final del proyecto.
 develop :	Rama principal de desarrollo, donde se integran todas las funcionalidades antes de llegar a main.
 feature/login	: Desarrollo de la ventana de inicio de sesión y recuperación de contraseña.
